@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<div class="card">
+		<div class="card-header">
+			<form asp-controller="Home" asp-action="ExportToPdf" method="post">
+				<input class="btn btn-outline-success" formaction="ExportToPdf" type="submit" value="Export To Pdf" />
+				<input class="btn btn-outline-info" formaction="ExportToExcel" type="submit" value="Export To Excel" />
+				<input class="btn btn-outline-danger" formaction="ExportToEmail" type="submit" value="Export To Email" />
+			</form>
+		</div>
+		<div class="card-body">
+			<table class="table table-bordered table-striped table-success">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.id</td>
+							<td>@item.name</td>
+							<td>@item.email</td>
+							<td>@item.phone</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
